@@ -12,7 +12,7 @@
 
 body {
 
-    font-family: 
+    font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -29,7 +29,8 @@ body {
 }
 
 
-/* Kontejneri kryesor */
+
+/* KONTEJNERI */
 
 .container {
 
@@ -69,6 +70,8 @@ header {
 header h1 {
 
     font-size: 26px;
+
+    line-height: 1.4;
 
     margin-bottom: 10px;
 
@@ -113,7 +116,7 @@ header .date {
 
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 
-    transition:.2s;
+    transition:.25s ease;
 
 }
 
@@ -179,7 +182,6 @@ header .date {
 .filters,
 .tasks-section {
 
-
     background:white;
 
     padding:22px;
@@ -225,7 +227,6 @@ h2 {
 .form-row input,
 .form-row select {
 
-
     flex:1;
 
     min-width:160px;
@@ -244,9 +245,16 @@ h2 {
 
 
 
+.form-row select {
+
+    cursor:pointer;
+
+}
+
+
+
 .form-row input:focus,
 .form-row select:focus {
-
 
     border-color:#1a73e8;
 
@@ -256,10 +264,17 @@ h2 {
 
 
 
+.form-row select:hover {
+
+    border-color:#1a73e8;
+
+}
+
+
+
 /* BUTONI SHTO */
 
 button[type="submit"] {
-
 
     width:100%;
 
@@ -309,7 +324,6 @@ button[type="submit"]:hover {
 
 .filter-btn {
 
-
     padding:9px 16px;
 
     border-radius:20px;
@@ -350,7 +364,6 @@ button[type="submit"]:hover {
 
 .task-card {
 
-
     background:#f8f9fa;
 
     padding:18px;
@@ -371,7 +384,9 @@ button[type="submit"]:hover {
 
     flex-wrap:wrap;
 
-    transition:.2s;
+    transition:.25s ease;
+
+    cursor:default;
 
 }
 
@@ -445,6 +460,13 @@ button[type="submit"]:hover {
 
 /* INFORMACIONI */
 
+.task-info {
+
+    width:auto;
+
+}
+
+
 .task-info h4 {
 
     font-size:16px;
@@ -460,6 +482,18 @@ button[type="submit"]:hover {
     font-size:13px;
 
     color:#666;
+
+}
+
+
+
+.task-info .email {
+
+    color:#1a73e8;
+
+    font-size:12px;
+
+    font-style:italic;
 
 }
 
@@ -496,7 +530,6 @@ button[type="submit"]:hover {
 
 .task-actions select {
 
-
     padding:8px;
 
     border-radius:7px;
@@ -508,7 +541,6 @@ button[type="submit"]:hover {
 
 
 .delete-btn {
-
 
     background:#e74c3c;
 
@@ -522,6 +554,8 @@ button[type="submit"]:hover {
 
     cursor:pointer;
 
+    transition:.2s;
+
 }
 
 
@@ -530,6 +564,8 @@ button[type="submit"]:hover {
 
     background:#c0392b;
 
+    transform:scale(1.05);
+
 }
 
 
@@ -537,7 +573,6 @@ button[type="submit"]:hover {
 /* KUR NUK KA DETYRA */
 
 .empty-state {
-
 
     text-align:center;
 
@@ -564,6 +599,8 @@ button[type="submit"]:hover {
     header h1 {
 
         font-size:20px;
+
+        line-height:1.4;
 
     }
 
@@ -599,16 +636,32 @@ button[type="submit"]:hover {
     }
 
 
-    .task-actions {
+    .task-info {
 
         width:100%;
 
     }
 
 
+    .task-actions {
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+
     .task-actions select {
 
-        flex:1;
+        width:100%;
+
+    }
+
+
+    .delete-btn {
+
+        width:100%;
 
     }
 
