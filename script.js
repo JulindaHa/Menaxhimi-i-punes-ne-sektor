@@ -1,4 +1,4 @@
-```javascript
+
 // Ruajtja dhe ngarkimi i detyrave
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -149,6 +149,3 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
 });
 
-// Ngarko të dhënat në fillim
-updateDashboard();
-```
