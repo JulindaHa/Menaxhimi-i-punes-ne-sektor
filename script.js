@@ -7,70 +7,146 @@
 let tasks = [];
 
 try {
+
     tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
 } catch (error) {
+
     tasks = [];
+
     localStorage.removeItem("tasks");
+
 }
+
 
 
 // Shfaq datën aktuale
 const currentDate = document.getElementById("currentDate");
 
+
 if (currentDate) {
+
     currentDate.textContent = new Date().toLocaleDateString("sq-AL", {
+
         weekday: "long",
+
         year: "numeric",
+
         month: "long",
+
         day: "numeric"
+
     });
+
 }
+
 
 
 // Ruaj detyrat
 function saveTasks() {
+
     localStorage.setItem("tasks", JSON.stringify(tasks));
+
 }
 
 
-// Shto detyrë
+
+// Shto detyrë të re
 const taskForm = document.getElementById("taskForm");
+
 
 if (taskForm) {
 
+
     taskForm.addEventListener("submit", function(e) {
+
 
         e.preventDefault();
 
 
+
+        const specialistSelect = document.getElementById("taskPerson");
+
+
+        const selectedSpecialist = 
+            specialistSelect.options[specialistSelect.selectedIndex];
+
+
+
         const task = {
+
 
             id: Date.now(),
 
-            title: document.getElementById("taskTitle").value.trim(),
 
-            person: document.getElementById("taskPerson").value.trim(),
+            title: document
+                .getElementById("taskTitle")
+                .value
+                .trim(),
 
-            deadline: document.getElementById("taskDeadline").value,
 
-            priority: document.getElementById("taskPriority").value,
 
-            status: document.getElementById("taskStatus").value,
+            person: selectedSpecialist.value,
+
+
+            email: selectedSpecialist.dataset.email || "",
+
+
+
+            deadline: document
+                .getElementById("taskDeadline")
+                .value,
+
+
+
+            priority: document
+                .getElementById("taskPriority")
+                .value,
+
+
+
+            status: document
+                .getElementById("taskStatus")
+                .value,
+
+
 
             createdAt: new Date().toISOString()
+
 
         };
 
 
+
         tasks.push(task);
+
 
         saveTasks();
 
+
+
+        alert(
+
+`✅ Detyra u krijua me sukses!
+
+👤 Specialist:
+${task.person}
+
+📧 Email:
+${task.email}`
+
+        );
+
+
+
         this.reset();
+
 
         updateDashboard();
 
+
     });
+
 
 }
 
@@ -79,35 +155,49 @@ if (taskForm) {
 // Ndrysho statusin
 function updateTaskStatus(id, status) {
 
+
     const task = tasks.find(t => t.id === id);
+
 
 
     if (task) {
 
+
         task.status = status;
+
 
         saveTasks();
 
+
         updateDashboard();
+
 
     }
 
+
 }
+
 
 
 
 // Fshi detyrë
 function deleteTask(id) {
 
+
     if (confirm("Jeni të sigurt që doni të fshini këtë detyrë?")) {
+
 
         tasks = tasks.filter(task => task.id !== id);
 
+
         saveTasks();
+
 
         updateDashboard();
 
+
     }
+
 
 }
 
@@ -119,48 +209,66 @@ function isLate(deadline, status) {
 
     if (!deadline || status === "perfunduar") {
 
+
         return false;
+
 
     }
 
 
+
     const today = new Date();
+
 
     today.setHours(0,0,0,0);
 
 
+
     const deadlineDate = new Date(deadline);
+
 
     deadlineDate.setHours(0,0,0,0);
 
 
+
     return deadlineDate < today;
 
+
 }
+
 
 
 
 // Teksti i statusit
 function getStatusText(status) {
 
+
     const statuses = {
+
 
         "per te bere": "📋 Për të Bërë",
 
+
         "ne progres": "🚧 Në Progres",
+
 
         "ne rishikim": "👀 Në Rishikim",
 
+
         "bllokuar": "🟣 Bllokuar",
 
+
         "perfunduar": "✅ Përfunduar"
+
 
     };
 
 
     return statuses[status] || status;
 
+
 }
+
 
 
 
@@ -170,27 +278,35 @@ function getPriorityText(priority) {
 
     const priorities = {
 
+
         "kritik": "🔴 Kritik",
+
 
         "larte": "🟠 I Lartë",
 
+
         "mesatar": "🟡 Mesatar",
 
+
         "ulet": "🟢 I Ulët"
+
 
     };
 
 
     return priorities[priority] || priority;
 
+
 }
+
 
 
 
 // Siguria për tekstet
 function escapeHTML(text) {
 
-    return String(text)
+
+    return String(text || "")
 
         .replace(/&/g, "&amp;")
 
@@ -202,7 +318,10 @@ function escapeHTML(text) {
 
         .replace(/'/g, "&#039;");
 
+
 }
+
+
 
 
 
@@ -233,11 +352,14 @@ function updateDashboard(filter = "te gjitha") {
 
         );
 
+
     }
 
 
 
+
     document.getElementById("totalTasks").textContent = tasks.length;
+
 
 
     document.getElementById("inProgressTasks").textContent =
@@ -245,14 +367,17 @@ function updateDashboard(filter = "te gjitha") {
         tasks.filter(t => t.status === "ne progres").length;
 
 
+
     document.getElementById("doneTasks").textContent =
 
         tasks.filter(t => t.status === "perfunduar").length;
 
 
+
     document.getElementById("lateTasks").textContent =
 
         tasks.filter(t => isLate(t.deadline, t.status)).length;
+
 
 
 
@@ -277,9 +402,12 @@ function updateDashboard(filter = "te gjitha") {
 
         `;
 
+
         return;
 
+
     }
+
 
 
 
@@ -287,6 +415,7 @@ function updateDashboard(filter = "te gjitha") {
 
 
         const late = isLate(task.deadline, task.status);
+
 
 
         let cardClass = task.priority;
@@ -298,9 +427,11 @@ function updateDashboard(filter = "te gjitha") {
             cardClass = "bllokuar";
 
 
+
         if (task.status === "perfunduar")
 
             cardClass = "perfunduar";
+
 
 
         if (late)
@@ -309,7 +440,9 @@ function updateDashboard(filter = "te gjitha") {
 
 
 
+
         return `
+
 
         <div class="task-card ${cardClass}">
 
@@ -321,20 +454,21 @@ function updateDashboard(filter = "te gjitha") {
 
 
                 <p>
-
                 👤 ${escapeHTML(task.person)}
-
                 |
-
                 ${getPriorityText(task.priority)}
-
                 </p>
 
+
+                <p>
+                📧 ${escapeHTML(task.email)}
+                </p>
 
 
                 <p class="deadline ${late ? "vonuar" : ""}">
 
-                    📅 ${new Date(task.deadline).toLocaleDateString("sq-AL")}
+                    📅 ${new Date(task.deadline)
+                    .toLocaleDateString("sq-AL")}
 
                     ${late ? " ⚠️ E VONUAR" : ""}
 
@@ -345,10 +479,12 @@ function updateDashboard(filter = "te gjitha") {
 
 
 
+
             <div class="task-actions">
 
 
                 <select onchange="updateTaskStatus(${task.id}, this.value)">
+
 
 
                     <option value="per te bere" ${task.status==="per te bere"?"selected":""}>
@@ -356,9 +492,11 @@ function updateDashboard(filter = "te gjitha") {
                     </option>
 
 
+
                     <option value="ne progres" ${task.status==="ne progres"?"selected":""}>
                     🚧 Në Progres
                     </option>
+
 
 
                     <option value="ne rishikim" ${task.status==="ne rishikim"?"selected":""}>
@@ -366,9 +504,11 @@ function updateDashboard(filter = "te gjitha") {
                     </option>
 
 
+
                     <option value="bllokuar" ${task.status==="bllokuar"?"selected":""}>
                     🟣 Bllokuar
                     </option>
+
 
 
                     <option value="perfunduar" ${task.status==="perfunduar"?"selected":""}>
@@ -376,7 +516,9 @@ function updateDashboard(filter = "te gjitha") {
                     </option>
 
 
+
                 </select>
+
 
 
                 <button class="delete-btn" onclick="deleteTask(${task.id})">
@@ -391,6 +533,7 @@ function updateDashboard(filter = "te gjitha") {
 
         </div>
 
+
         `;
 
 
@@ -400,11 +543,14 @@ function updateDashboard(filter = "te gjitha") {
 
 
 
-// Butonat e filtrimit
+
+
+// Filtrat
 document.querySelectorAll(".filter-btn").forEach(button => {
 
 
     button.addEventListener("click", function() {
+
 
 
         document.querySelectorAll(".filter-btn")
@@ -416,7 +562,9 @@ document.querySelectorAll(".filter-btn").forEach(button => {
         this.classList.add("active");
 
 
+
         updateDashboard(this.dataset.filter);
+
 
 
     });
@@ -426,10 +574,14 @@ document.querySelectorAll(".filter-btn").forEach(button => {
 
 
 
+
 // Nisja fillestare
 updateDashboard();
 
 
+
+
 // Lejo përdorimin nga HTML
 window.updateTaskStatus = updateTaskStatus;
+
 window.deleteTask = deleteTask;
