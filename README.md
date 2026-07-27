@@ -1,0 +1,1 @@
+# Menaxhimi-i-punes-ne-sektor
