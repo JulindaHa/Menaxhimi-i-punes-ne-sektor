@@ -1,0 +1,88 @@
+```html
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paneli i Sektorit - Gjurmimi i Detyrave</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Paneli i Sektorit</h1>
+            <p class="date" id="currentDate"></p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>📋 Gjithsej</h3>
+                <p id="totalTasks">0</p>
+            </div>
+            <div class="stat-card progress">
+                <h3>🚧 Në Progres</h3>
+                <p id="inProgressTasks">0</p>
+            </div>
+            <div class="stat-card done">
+                <h3>✅ Të Përfunduara</h3>
+                <p id="doneTasks">0</p>
+            </div>
+            <div class="stat-card late">
+                <h3>⚠️ Të Vonuara</h3>
+                <p id="lateTasks">0</p>
+            </div>
+        </div>
+
+        <div class="add-task-section">
+            <h2>➕ Shto Detyrë të Re</h2>
+            <form id="taskForm">
+                <div class="form-row">
+                    <input type="text" id="taskTitle" placeholder="Titulli i detyrës..." required>
+                    <input type="text" id="taskPerson" placeholder="Përgjegjësi..." required>
+                </div>
+                <div class="form-row">
+                    <input type="date" id="taskDeadline" required>
+                    <select id="taskPriority" required>
+                        <option value="">Prioriteti...</option>
+                        <option value="kritik">🔴 Kritik</option>
+                        <option value="larte">🟠 I Lartë</option>
+                        <option value="mesatar">🟡 Mesatar</option>
+                        <option value="ulet">🟢 I Ulët</option>
+                    </select>
+                    <select id="taskStatus" required>
+                        <option value="per te bere">📋 Për të Bërë</option>
+                        <option value="ne progres">🚧 Në Progres</option>
+                        <option value="ne rishikim">👀 Në Rishikim</option>
+                        <option value="bllokuar">🟣 Bllokuar</option>
+                        <option value="perfunduar">✅ Përfunduar</option>
+                    </select>
+                </div>
+                <button type="submit">Shto Detyrën</button>
+            </form>
+        </div>
+
+        <div class="filters">
+            <h2>🔍 Filtro Detyrat</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="te gjitha">Të Gjitha</button>
+                <button class="filter-btn" data-filter="per te bere">Për të Bërë</button>
+                <button class="filter-btn" data-filter="ne progres">Në Progres</button>
+                <button class="filter-btn" data-filter="ne rishikim">Në Rishikim</button>
+                <button class="filter-btn" data-filter="bllokuar">Bllokuar</button>
+                <button class="filter-btn" data-filter="perfunduar">Përfunduar</button>
+                <button class="filter-btn" data-filter="vonuara">⚠️ Të Vonuara</button>
+            </div>
+        </div>
+
+        <div class="tasks-section">
+            <h2>📋 Lista e Detyrave</h2>
+            <div id="tasksList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+
