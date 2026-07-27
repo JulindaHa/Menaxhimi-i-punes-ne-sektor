@@ -1,7 +1,6 @@
- /* ==============================
+/* ==============================
    Paneli i Gjurmimit të Detyrave
    ============================== */
-
 
 * {
     margin: 0;
@@ -11,7 +10,6 @@
 
 
 body {
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -21,69 +19,42 @@ body {
         sans-serif;
 
     background: #f0f2f5;
-
     color: #333;
-
     padding: 16px;
-
 }
-
 
 
 /* KONTEJNERI */
 
 .container {
-
     max-width: 1000px;
-
     margin: auto;
-
 }
-
 
 
 /* HEADER */
 
 header {
-
-    background: linear-gradient(
-        135deg,
-        #1a73e8,
-        #1557b0
-    );
-
+    background: linear-gradient(135deg, #1a73e8, #1557b0);
     color: white;
-
     padding: 28px 20px;
-
     border-radius: 14px;
-
     margin-bottom: 20px;
-
     text-align: center;
-
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
-
 }
 
 
 header h1 {
-
     font-size: 26px;
-
     line-height: 1.4;
-
     margin-bottom: 10px;
-
 }
 
 
 header .date {
-
-    font-size: 14px;
-
-    opacity: .9;
-
+    font-size:14px;
+    opacity:.9;
 }
 
 
@@ -91,87 +62,54 @@ header .date {
 /* STATISTIKAT */
 
 .stats {
-
-    display: grid;
-
-    grid-template-columns: repeat(4,1fr);
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
 }
-
 
 
 .stat-card {
-
     background:white;
-
     padding:18px;
-
     border-radius:12px;
-
     text-align:center;
-
     box-shadow:0 3px 10px rgba(0,0,0,.08);
-
     transition:.25s ease;
-
 }
-
 
 
 .stat-card:hover {
-
     transform:translateY(-3px);
-
 }
-
 
 
 .stat-card h3 {
-
     font-size:13px;
-
     color:#666;
-
     margin-bottom:10px;
-
 }
-
 
 
 .stat-card p {
-
     font-size:32px;
-
     font-weight:bold;
-
     color:#1a73e8;
-
 }
 
 
-
 .stat-card.progress p {
-
     color:#e67e22;
-
 }
 
 
 .stat-card.done p {
-
     color:#27ae60;
-
 }
 
 
 .stat-card.late p {
-
     color:#e74c3c;
-
 }
 
 
@@ -183,27 +121,18 @@ header .date {
 .tasks-section {
 
     background:white;
-
     padding:22px;
-
     border-radius:12px;
-
     margin-bottom:18px;
-
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 
 }
 
 
-
 h2 {
-
     font-size:19px;
-
     color:#1a73e8;
-
     margin-bottom:18px;
-
 }
 
 
@@ -213,55 +142,41 @@ h2 {
 .form-row {
 
     display:flex;
-
     gap:12px;
-
     margin-bottom:12px;
-
     flex-wrap:wrap;
 
 }
-
 
 
 .form-row input,
 .form-row select {
 
     flex:1;
-
     min-width:160px;
-
     padding:12px;
 
     border:2px solid #ddd;
-
     border-radius:8px;
 
     font-size:14px;
-
     background:white;
 
 }
 
 
-
 .form-row select {
-
     cursor:pointer;
-
 }
-
 
 
 .form-row input:focus,
 .form-row select:focus {
 
     border-color:#1a73e8;
-
     outline:none;
 
 }
-
 
 
 .form-row select:hover {
@@ -277,27 +192,22 @@ h2 {
 button[type="submit"] {
 
     width:100%;
-
     padding:13px;
 
     margin-top:8px;
 
     border:none;
-
     border-radius:8px;
 
     background:#1a73e8;
-
     color:white;
 
     font-size:16px;
-
     cursor:pointer;
 
     transition:.2s;
 
 }
-
 
 
 button[type="submit"]:hover {
@@ -313,13 +223,10 @@ button[type="submit"]:hover {
 .filter-buttons {
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:10px;
 
 }
-
 
 
 .filter-btn {
@@ -339,7 +246,6 @@ button[type="submit"]:hover {
 }
 
 
-
 .filter-btn:hover {
 
     border-color:#1a73e8;
@@ -347,13 +253,10 @@ button[type="submit"]:hover {
 }
 
 
-
 .filter-btn.active {
 
     background:#1a73e8;
-
     color:white;
-
     border-color:#1a73e8;
 
 }
@@ -386,10 +289,7 @@ button[type="submit"]:hover {
 
     transition:.25s ease;
 
-    cursor:default;
-
 }
-
 
 
 .task-card:hover {
@@ -403,37 +303,28 @@ button[type="submit"]:hover {
 /* PRIORITETET */
 
 .task-card.kritik {
-
     border-left-color:#e74c3c;
-
 }
 
 
 .task-card.larte {
-
     border-left-color:#e67e22;
-
 }
 
 
 .task-card.mesatar {
-
     border-left-color:#f1c40f;
-
 }
 
 
 .task-card.ulet {
-
     border-left-color:#27ae60;
-
 }
 
 
 .task-card.bllokuar {
 
     border-left-color:#8e44ad;
-
     opacity:.75;
 
 }
@@ -442,7 +333,6 @@ button[type="submit"]:hover {
 .task-card.perfunduar {
 
     border-left-color:#27ae60;
-
     opacity:.65;
 
 }
@@ -451,7 +341,6 @@ button[type="submit"]:hover {
 .task-card.vonuar {
 
     border-left-color:#e74c3c;
-
     background:#ffeaea;
 
 }
@@ -462,7 +351,8 @@ button[type="submit"]:hover {
 
 .task-info {
 
-    width:auto;
+    flex:1;
+    min-width:220px;
 
 }
 
@@ -470,21 +360,19 @@ button[type="submit"]:hover {
 .task-info h4 {
 
     font-size:16px;
-
     margin-bottom:6px;
 
-}
+    overflow-wrap:anywhere;
 
+}
 
 
 .task-info p {
 
     font-size:13px;
-
     color:#666;
 
 }
-
 
 
 .task-info .email {
@@ -496,7 +384,6 @@ button[type="submit"]:hover {
     font-style:italic;
 
 }
-
 
 
 .deadline {
@@ -527,7 +414,6 @@ button[type="submit"]:hover {
 }
 
 
-
 .task-actions select {
 
     padding:8px;
@@ -535,6 +421,8 @@ button[type="submit"]:hover {
     border-radius:7px;
 
     border:2px solid #ddd;
+
+    cursor:pointer;
 
 }
 
@@ -559,7 +447,6 @@ button[type="submit"]:hover {
 }
 
 
-
 .delete-btn:hover {
 
     background:#c0392b;
@@ -570,7 +457,7 @@ button[type="submit"]:hover {
 
 
 
-/* KUR NUK KA DETYRA */
+/* BOSH */
 
 .empty-state {
 
@@ -584,24 +471,17 @@ button[type="submit"]:hover {
 
 
 
-/* MOBILE */
+/* TABLET */
 
 @media(max-width:700px){
 
-
     body {
-
         padding:10px;
-
     }
 
 
     header h1 {
-
         font-size:20px;
-
-        line-height:1.4;
-
     }
 
 
@@ -636,13 +516,6 @@ button[type="submit"]:hover {
     }
 
 
-    .task-info {
-
-        width:100%;
-
-    }
-
-
     .task-actions {
 
         width:100%;
@@ -669,8 +542,9 @@ button[type="submit"]:hover {
 
 
 
-@media(max-width:400px){
+/* TELEFON */
 
+@media(max-width:400px){
 
     .stats {
 
